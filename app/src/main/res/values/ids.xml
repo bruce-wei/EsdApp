@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="pass" type="id" />
+    <item name="fail" type="id" />
+    <item name="wait" type="id" />
+</resources>
