@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.pass:
-                    UserBll.insertModel(new UserInfo());
                     setPromoteOption(Promote.PASS.ordinal());
                     break;
 
@@ -50,6 +49,33 @@ public class MainActivity extends AppCompatActivity {
                     setPromoteOption(Promote.FAIL.ordinal());
                     break;
             }
+        }
+    }
+
+    class TestingThread implements Runnable{
+
+        @Override
+        public void run() {
+            Message msg = handler.obtainMessage();
+            if (isTestOk()) {
+                msg.what = R.id.pass;
+                handler.handleMessage(msg);
+            } else {
+                msg.what = R.id.fail;
+                handler.handleMessage(msg);
+            }
+            txtUserId.setText("");
+            txtUserId.requestFocus();
+
+            checkVoltage = new Runnable() {
+                @Override
+                public void run() {
+                    Message msg = new Message();
+                    msg.what = R.id.wait;
+                    handler.sendMessageDelayed(msg, 3000);
+                }
+            };
+            checkVoltage.run();
         }
     }
 
@@ -96,26 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
 
-                    Message msg = handler.obtainMessage();
-                    if (isTestOk()) {
-                        msg.what = R.id.pass;
-                        handler.handleMessage(msg);
-                    } else {
-                        msg.what = R.id.fail;
-                        handler.handleMessage(msg);
-                    }
-                    txtUserId.setText("");
-                    txtUserId.requestFocus();
-
-                    checkVoltage = new Runnable() {
-                        @Override
-                        public void run() {
-                            Message msg = new Message();
-                            msg.what = R.id.wait;
-                            handler.sendMessageDelayed(msg, 3000);
-                        }
-                    };
-                    checkVoltage.run();
+                    new Thread(new TestingThread()).start();
                     return true;
                 }
 
