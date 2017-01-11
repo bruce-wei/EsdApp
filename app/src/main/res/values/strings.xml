@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">静电测试仪V5</string>
+    <string name="title_name">PHICOMM</string>
     <string name="user_id">请输入工号：</string>
     <string name="test_cancel">测试取消</string>
 </resources>

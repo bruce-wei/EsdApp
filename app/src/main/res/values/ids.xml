@@ -3,4 +3,8 @@
     <item name="pass" type="id" />
     <item name="fail" type="id" />
     <item name="wait" type="id" />
+    <item name="clear" type="id"/>
+    <item name="testing" type="id"/>
+    <item name="no_user" type="id"/>
+    <item name="shopfloor_error" type="id"/>
 </resources>

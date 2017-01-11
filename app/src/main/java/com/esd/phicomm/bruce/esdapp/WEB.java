@@ -17,23 +17,23 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import android.util.Log;
 
-public class WEB {
+class WEB {
 
     private static String TAG = "WEB";
-    private static String SERVER_URL = "http://172.16.171.231/SFIS_ESD/Web_EsdReport.asmx";
+    private static String SERVER_URL = "http://170.1.13.231/SFIS_ESD/Web_EsdReport.asmx";
     private static final String PACE = "http://tempuri.org/";
     private static String METHOD = null;
     private static String SOAPACTION = null;
     private static String returntype;
 
-    public static void setMethod(String Method) {
+    static void setMethod(String Method) {
         METHOD = Method;
         SOAPACTION = PACE + METHOD;
         Log.d(TAG, "setMethod:" + METHOD);
     }
 
     @SuppressWarnings("hiding")
-    public static Object WebServices(HashMap<String, String> map) {
+    static Object WebServices(HashMap<String, String> map) {
 
         for (Entry<String, String> element : map.entrySet()) {
             Log.d(TAG,
@@ -91,6 +91,8 @@ public class WEB {
                 }
                 return result.toString();
             }
+            return "";
+
         } catch (SoapFault e) {
             e.printStackTrace();
             Log.d(TAG, e.getMessage());
@@ -100,7 +102,6 @@ public class WEB {
             Log.d(TAG, e.getMessage());
             return null;
         }
-        return null;
     }
 
     public static void changeURL(String URL) {
