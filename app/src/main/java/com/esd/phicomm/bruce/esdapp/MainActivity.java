@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private View titleBar;
+    private EditText etUserId;
     private TextView txtResult;
     private TextView txtResultEng;
     private TextView txtUserId;
@@ -151,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
         setPromoteOption(Promote.WAIT.ordinal());
         txtUserId.setFocusable(true);
         txtUserId.setFocusableInTouchMode(true);
+        etUserId.setInputType(InputType.TYPE_NULL);
     }
 
     private void getControls() {
@@ -159,6 +163,7 @@ public class MainActivity extends AppCompatActivity {
         txtResultEng = (TextView) this.findViewById(R.id.txtShowEng);
         btnCancel = (Button) this.findViewById(R.id.btnCancelTest);
         titleBar = this.findViewById(R.id.barTitle);
+        etUserId = (EditText) this.findViewById(R.id.txtId);
     }
 
     private void setListener() {
