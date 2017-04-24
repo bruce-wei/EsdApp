@@ -9,8 +9,8 @@ import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+import java.util.Properties;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -145,6 +145,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        String url;
+        Properties properties = new Properties();
+        try {
+            properties.load(MainActivity.this.getAssets().open("config.prop"));
+            url = properties.getProperty("SERVER_URL");
+            WEB.changeURL(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         getSupportActionBar().hide();
         getControls();

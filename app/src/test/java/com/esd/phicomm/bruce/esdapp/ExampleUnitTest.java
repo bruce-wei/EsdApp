@@ -1,6 +1,13 @@
 package com.esd.phicomm.bruce.esdapp;
 
+import android.content.Context;
+
 import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+import java.util.ResourceBundle;
 
 import static org.junit.Assert.*;
 
@@ -14,4 +21,5 @@ public class ExampleUnitTest {
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
     }
+
 }
